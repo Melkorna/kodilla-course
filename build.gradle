@@ -12,6 +12,7 @@ repositories {
 
 dependencies {
 
+implementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
 }
 
 test {
