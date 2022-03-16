@@ -24,15 +24,15 @@ public class WeatherForecast {
     }
 
     public double averageTemperature(){
-        Map<String, Double> resultMap1 = new HashMap<>();
+        Map<String, Double> resultMap = new HashMap<>();
 
         double average=0;
 
         for (Map.Entry<String, Double> temperature : temperatures.getTemperatures().entrySet()) {
-            resultMap1.put(temperature.getKey(), temperature.getValue());
+            resultMap.put(temperature.getKey(), temperature.getValue());
             average = average + temperature.getValue();
         }
         System.out.println("Average temperature is: ");
-        return average / resultMap1.size();
+        return average / resultMap.size();
     }
 }
