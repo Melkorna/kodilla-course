@@ -60,4 +60,24 @@ class WeatherForecastTestSuite {
         Assertions.assertEquals(expectedResult, Result);
         System.out.println(Result);
     }
+
+    @DisplayName("Test Forecast Median Temperature")
+    @Test
+    void testCalculateMedianTemperaturesWithMock() {
+        //Given
+        Map<String, Double> temperaturesMap = new HashMap<>();
+        temperaturesMap.put("Wroclaw", 24.8);
+        temperaturesMap.put("Rzeszow", 25.5);
+        temperaturesMap.put("Warszawa", 25.2);
+        temperaturesMap.put("Gdansk", 26.1);
+        temperaturesMap.put("Krakow", 26.2);
+        when(temperaturesMock.getTemperatures()).thenReturn(temperaturesMap);
+        WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
+
+        //When
+        double result = weatherForecast.calculateMedianTemperature();
+
+        //Then
+        Assertions.assertEquals(25.5, result);
+    }
 }
