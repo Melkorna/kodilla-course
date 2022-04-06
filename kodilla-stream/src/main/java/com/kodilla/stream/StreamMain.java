@@ -1,39 +1,25 @@
 package com.kodilla.stream;
 
-import com.kodilla.stream.iterate.NumbersGenerator;
-import com.kodilla.stream.lambda.*;
-import com.kodilla.stream.reference.FunctionalCalculator;
-import com.kodilla.stream.beautifier.*;
+import com.kodilla.stream.book.Book;
+import com.kodilla.stream.book.BookDirectory;
+import com.kodilla.stream.forumuser.Forum;
+import com.kodilla.stream.forumuser.ForumUser;
+
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class StreamMain {
 
     public static void main(String[] args) {
+        Forum theForum = new Forum();
+        Map<Integer,ForumUser> theResulMapOfUsers = theForum.getList().stream()
+                .filter(forumUser ->  forumUser.getSex()=='M')
+                .filter(forumUser ->  forumUser.getDateOfBirth().getYear()>2001)
+                .filter(forumUser ->  forumUser.getNumberOfPosts()>1)
+                .collect(Collectors.toMap(ForumUser::getUserIdentifier, ForumUser -> ForumUser));
+                theResulMapOfUsers.entrySet().stream()
 
-        ExpressionExecutor expressionExecutor = new ExpressionExecutor();
-
-        System.out.println("Calculating expressions with lambdas");
-        expressionExecutor.executeExpression(10, 5, (a, b) -> a + b);
-        expressionExecutor.executeExpression(10, 5, (a, b) -> a - b);
-        expressionExecutor.executeExpression(10, 5, (a, b) -> a * b);
-        expressionExecutor.executeExpression(10, 5, (a, b) -> a / b);
-
-        System.out.println("Calculating expressions with method references");
-        expressionExecutor.executeExpression(3,4, FunctionalCalculator::multiplyAByB);
-        expressionExecutor.executeExpression(3,4,FunctionalCalculator::addAToB);
-        expressionExecutor.executeExpression(3,4,FunctionalCalculator::subBFromA);
-        expressionExecutor.executeExpression(3,4,FunctionalCalculator::divideAByB);
-
-        PoemBeautifier poemBeautifier = new PoemBeautifier();
-
-        poemBeautifier.beautify("This is an example text.",PoemBeautifier::addABC);
-        poemBeautifier.beautify("This is an example text.",PoemBeautifier::substring);
-        poemBeautifier.beautify("This is an example text.",PoemBeautifier::toUpperCase);
-        poemBeautifier.beautify("This is an example text.",PoemBeautifier::replace);
-
-        System.out.println("Using Stream to generate even numbers from 1 to 20");
-        NumbersGenerator.generateEven(20);
-
-
-
+                        .map(entry -> entry.getKey() + ":" + entry.getValue());
+        System.out.println(theResulMapOfUsers);
     }
 }
