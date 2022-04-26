@@ -27,7 +27,7 @@ public class RpsRunner {
                 String userMove = "";
                 //User move
                 while (true) {
-                    System.out.println("Please choose 'r' - rock; 'p' - paper; 's'- stone");
+                    System.out.println("Please choose 'r' - rock; 'p' - paper; 's'- scissors");
                     userMove = scanner.nextLine();
                     if (userMove.equals("r") || userMove.equals("p") || userMove.equals("s")) {
                         numRounds++;
