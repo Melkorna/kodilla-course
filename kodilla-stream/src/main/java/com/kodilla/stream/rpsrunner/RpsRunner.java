@@ -8,17 +8,17 @@ public class RpsRunner {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
-        int computerPoints=0;
-        int userPoints=0;
 
         System.out.println("Please wrire your name here" +
                 "\n↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓");
 
         String userName = scanner.nextLine();
-        System.out.println("Hello "+ " " +userName+"\n How rouds do you want to play?");
-        int rounds = scanner.nextInt();
         while (true) {
+            System.out.println("Hello "+ " " +userName+"\n How rouds do you want to play?");
             int numRounds = 0;
+            int computerPoints=0;
+            int userPoints=0;
+            int rounds = scanner.nextInt();
 
             //Computer move
             while (true) {
@@ -78,6 +78,7 @@ public class RpsRunner {
             System.out.println("Play again? choose yes/no");
             String playAgain = scanner.nextLine();
             if (!playAgain.equals("yes")) {
+                break;
             }
             continue;
         }
