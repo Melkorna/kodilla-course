@@ -1,20 +1,16 @@
 package com.kodilla.exception.test;
 
+import java.util.stream.Stream;
+
 public class FirstChallenge {
 
     public double divide(double a, double b) throws ArithmeticException {
-        try {
-
         if (b == 0) {
-            }
             throw new ArithmeticException();
-        }catch (ArithmeticException e) {
-            System.out.println("Cos jest nie tak");
-        }finally {
-            System.out.println("Przez zero sie nie dzieli gluptas");
         }
         return a / b;
     }
+
 
     /**
      * This main can throw an ArithmeticException!!!
@@ -22,8 +18,13 @@ public class FirstChallenge {
      */
     public static void main(String[] args) {
         FirstChallenge firstChallenge = new FirstChallenge();
-        double result = firstChallenge.divide(3, 0);
 
-        System.out.println(result);
+        try {
+            double result = firstChallenge.divide(3, 0);
+        }catch (ArithmeticException e){
+            System.out.println("Cos poszlo nie tak");
+        }finally {
+            System.out.println("Nie mozna dzielic przez zero!");
+        }
     }
 }
