@@ -14,7 +14,7 @@ public class SearchFlights {
         if (AirMap.get(flight.getArrivalAirport()).equals(AirMap.containsKey(flight.getArrivalAirport()))){
             return true;
         }
-        System.out.println("Flight: " + flight.getArrivalAirport() + ""+"not exist");
+        System.out.println("Flight: " + flight.getArrivalAirport() + " "+"not exist");
         throw new RouteNotFoundException();
     }
     public static void main(String[]args) throws RouteNotFoundException {
