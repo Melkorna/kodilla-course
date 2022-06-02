@@ -8,7 +8,7 @@ public class OrderApplication {
         InformUseService informationService = new InformServeOrder();
         OrderService orderService = new ProductOrderService();
         OrderProcess orderProcessor = new OrderProcess(informationService, orderService);
-        orderProcessor.process(new User("Olek", "Orlowski"), "GPU GTX 1070", 1, LocalDate.ofYearDay(2021, 254), true);
+        orderProcessor.process(new User("Olek", "Orlowski"), "Kosiarka", 1, LocalDate.ofYearDay(2021, 254), true);
 
     }
 }
